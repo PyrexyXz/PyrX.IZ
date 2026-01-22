@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PyrX - Voxiom.io Clan | Official Website" />
+  <title>PyrX | Voxiom.io Clan</title>
+
+  <style>
+    :root {
+      --bg: #000;
+      --accent1: #39ff14; /* Neon lime start */
+      --accent2: #ccff33; /* Neon lime end */
+      --text: #39ff14; /* Neon lime text */
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* BACKGROUND LOGO PULSANT */
+    body::before {
+      content: "PyrX";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 25rem;
+      font-weight: 900;
+      color: var(--accent1);
+      opacity: 0.05;
+      z-index: 0;
+      filter: blur(8px);
+      pointer-events: none;
+      text-align: center;
+      text-shadow: 0 0 50px var(--accent1), 0 0 100px var(--accent2);
+      white-space: nowrap;
+      animation: pulseBg 3s infinite alternate;
+    }
+
+    @keyframes pulseBg {
+      0% { opacity: 0.03; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.06; transform: translate(-50%, -50%) scale(1.02); }
+      100% { opacity: 0.03; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* LOADING SCREEN */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 3s;
+    }
+
+    #loader h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 1.2s infinite alternate;
+      text-shadow: 0 0 10px var(--accent1), 0 0 20px var(--accent2), 0 0 40px var(--accent1);
+    }
+
+    /* INTRO */
+    #intro {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle, #001a00, #000);
+      animation: fadeIn 2s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    #intro h1 {
+      font-size: 4rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px var(--accent1), 0 0 20px var(--accent2), 0 0 40px var(--accent1);
+    }
+
+    #intro p {
+      opacity: 0.8;
+      text-shadow: 0 0 5px var(--accent1), 0 0 10px var(--accent2);
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 1rem 2.2rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #000;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .3s, box-shadow .3s;
+      cursor: pointer;
+      border: none;
+      text-shadow: 0 0 5px var(--accent1);
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(204,255,51,.9);
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,.9);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    nav a {
+      margin-left: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      text-shadow: 0 0 5px var(--accent1);
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeIn 1.2s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: #0a0a0a;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(57,255,20,.25);
+      transition: transform .4s;
+      color: var(--text);
+      text-shadow: 0 0 5px var(--accent1), 0 0 10px var(--accent2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card:hover { transform: translateY(-10px); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.6rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem;
+      opacity: .6;
+      text-shadow: 0 0 5px var(--accent1);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* SPAM BUTTON */
+    #likeBtn {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #000;
+      font-size: 1.5rem;
+      font-weight: 800;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-top: 2rem;
+      text-shadow: 0 0 5px var(--accent1);
+    }
+
+    #likeBtn:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(204,255,51,0.9); }
+    #likeBtn.active { animation: glow 0.5s ease; }
+
+    /* FIXED BUTTONS */
+    #youtubeBtn, #discordBtn, #clanBtn {
+      position: fixed;
+      right: 2rem;
+      padding: 1rem 2rem;
+      font-weight: 800;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-shadow: 0 0 5px var(--accent1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 10;
+    }
+
+    #youtubeBtn {
+      bottom: 11rem;
+      background: linear-gradient(90deg, #ff0000, #ff5555);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(255,0,0,0.7);
+    }
+
+    #discordBtn {
+      bottom: 6.5rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #000;
+      box-shadow: 0 0 30px rgba(204,255,51,0.7);
+    }
+
+    #clanBtn {
+      bottom: 2rem;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #000;
+      box-shadow: 0 0 30px rgba(204,255,51,0.7);
+    }
+
+    #youtubeBtn:hover, #discordBtn:hover, #clanBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 60px rgba(255,255,255,0.9);
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px var(--accent1); transform: scale(1); }
+      50% { box-shadow: 0 0 25px var(--accent2); transform: scale(1.2); }
+      100% { box-shadow: 0 0 10px var(--accent1); transform: scale(1); }
+    }
+
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader"><h1>PyrX</h1></div>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>PyrX</h1>
+  <p>Elite Voxiom.io Clan</p>
+  <a class="btn" href="#home">Enter Site</a>
+</div>
+
+<header>
+  <h2>PyrX</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#members">Members</a>
+    <a href="https://discord.gg/J5G8rbjNRH" target="_blank">Discord</a>
+  </nav>
+</header>
+
+<section id="home">
+  <div class="card">
+    <h2>About PyrX</h2>
+    <p style="margin: 2.5rem 0; line-height: 1.8; letter-spacing: 0.5px;">
+      PyrX is a competitive Voxiom.io clan built for dominance, teamwork and skill.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem;">
+      <a class="btn" href="https://voxiom.io" target="_blank" style="min-width: 220px; text-align: center;">Play Voxiom.io</a>
+      <a class="btn" href="https://discord.gg/J5G8rbjNRH" target="_blank" style="min-width: 220px; text-align: center;">Join Discord</a>
+    </div>
+  </div>
+
+  <!-- SPAM BUTTON -->
+  <div style="text-align:center;">
+    <button id="likeBtn">❤ Like</button>
+  </div>
+</section>
+
+<section id="members">
+  <div class="card">
+    <h2>Clan Members</h2>
+    <div class="grid">
+      <!-- Members cards -->
+      <div class="card"><p>Pyrexy</p></div>
+      <div class="card"><p>1x1x1x1x1x1</p></div>
+      <div class="card"><p>-SMNVNMS-</p></div>
+      <div class="card"><p>Big_Mamba</p></div>
+      <div class="card"><p>dkjefjsdjkhsoldier</p></div>
+      <div class="card"><p>Xronier</p></div>
+      <div class="card"><p>Reoxity</p></div>
+      <div class="card"><p>aero_</p></div>
+      <div class="card"><p>Bad-Aimbot</p></div>
+      <div class="card"><p>MaXvirity</p></div>
+      <div class="card"><p>HappyFishy</p></div>
+      <div class="card"><p>killer-dragon</p></div>
+      <div class="card"><p>catti</p></div>
+      <div class="card"><p>Diabolical</p></div>
+      <div class="card"><p>IMCRabbit</p></div>
+      <div class="card"><p>CS1</p></div>
+      <div class="card"><p>-Veteran-</p></div>
+      <div class="card"><p>sakuri_samurai</p></div>
+      <div class="card"><p>Flammbino</p></div>
+      <div class="card"><p>idontwantaname2</p></div>
+      <div class="card"><p>TH_I-_pl-lq_-I_HT</p></div>
+      <div class="card"><p>_Pro_Killer_</p></div>
+      <div class="card"><p>Panda_Crystal</p></div>
+      <div class="card"><p>MyisticKotin</p></div>
+      <div class="card"><p>cricket_addict6752</p></div>
+      <div class="card"><p>IronScorpion.jEeh</p></div>
+      <div class="card"><p>paying</p></div>
+      <div class="card"><p>Vexcore</p></div>
+      <div class="card"><p>xycer</p></div>
+      <div class="card"><p>PhoenixA</p></div>
+      <div class="card"><p>Real_burgerchesse</p></div>
+      <div class="card"><p>-_1V1_-</p></div>
+      <div class="card"><p>jiwdqhwdb_best</p></div>
+      <div class="card"><p>ItzJW_</p></div>
+      <div class="card"><p>majordeath-gs-</p></div>
+      <div class="card"><p>NZEN</p></div>
+      <div class="card"><p>_Edelweiss_</p></div>
+      <div class="card"><p>Real-anti-jija</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 PyrX Clan • Neon Lime Theme • <a href="https://discord.gg/J5G8rbjNRH" target="_blank" style="color:var(--accent2); text-decoration:none;">Join Discord</a></p>
+</footer>
+
+<!-- FIXED BUTTONS -->
+<button id="youtubeBtn" onclick="window.open('https://youtube.com/@jiwdqhwdb?si=PLzgEeJHubiuGAOH','_blank')">YouTube</button>
+<button id="discordBtn" onclick="window.open('https://discord.gg/J5G8rbjNRH','_blank')">Discord</button>
+<button id="clanBtn" onclick="window.open('https://voxiom.io/clans/view/PyrX','_blank')">Go to PyrX Clan</button>
+
+<script>
+  // Like / Spam button functionality
+  const likeBtn = document.getElementById('likeBtn');
+  likeBtn.addEventListener('click', () => {
+    likeBtn.classList.add('active');
+    setTimeout(() => { likeBtn.classList.remove('active'); }, 500);
+  });
+</script>
+
+</body>
+</html>
